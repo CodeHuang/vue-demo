@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueDemo</title>
+</head>
+<body>
+<div id="app">
+    <button @click="handleClick">点我</button>
+    <input type="text" v-model="num"><button @click="num++">+</button><button @click="num--">-</button>
+    <h1>
+        <span v-text="name"></span>非常帅</br>
+       {{num}}位女神为其着迷
+    </h1>
+    <h1>
+        您的生日：{{birth}}
+    </h1>
+</div>
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",// element,vue作用的标签
+            data:{
+                name:"",
+                num:1,
+                birthday:1529032123201
+            },
+            created(){
+                this.name="周杰伦";
+            },
+            methods:{
+                handleClick(){
+                    console.log(this);
+                    console.log("hello");
+                }
+            },
+            computed:{
+                birth(){
+                    const day = new Date(this.birthday);
+                    return day.getFullYear()+"年"+day.getMonth()+"月"+day.getDay()+"日";
+                }
+            }
+        });
+//
+    </script>
+</body>
+</html>
